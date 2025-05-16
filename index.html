@@ -69,14 +69,21 @@
       opacity: 1;
     }
 
-    #about-projects h2,
-    #contact h2 {
-      border-bottom: 2px solid #fbc02d;
-      padding-bottom: 0.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: #e91e63;
-    }
+  /* Shared heading styles (keep these) */
+#about-projects h2,
+#gallery h2,
+#contact h2 {
+  border-bottom: 2px solid #fbc02d;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #e91e63; /* default pink */
+}
+
+/* Override ONLY for gallery heading */
+#gallery h2 {
+  color: #d81b60 !important; /* stronger pink override */
+}
 
     #gallery {
   text-align: center;
