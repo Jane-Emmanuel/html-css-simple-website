@@ -1,253 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>jaind.ai Portfolio</title>
-<style>
-  /* Reset and base */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fffde7; /* pale yellow */
-    color: #555;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>jaind.ai Web-Sample</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fffde7;
+      color: #555;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
 
-  /* Header */
-  header {
-    position: relative;
-    background: url('https://tinyurl.com/mr223ncc') no-repeat center center/cover;
-    color: white;
-    padding: 6rem 1rem;
-    text-align: center;
-    overflow: hidden;
-    animation: fadeInDown 1s ease forwards;
-  }
-  header::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(233, 30, 99, 0.6); /* pink overlay */
-    z-index: 0;
-  }
-  header h1, header p {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    opacity: 0;
-    animation: fadeInUp 1s ease forwards;
-    animation-delay: 0.5s;
-  }
-  header h1 {
-    font-weight: 700;
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-  }
-  header p {
-    font-size: 1.3rem;
-    font-weight: 400;
-  }
-
-  main {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
-
-  /* Sections shared styles */
-  section {
-    margin-bottom: 3rem;
-    animation: fadeIn 1s ease forwards;
-    opacity: 0;
-    background-color: #fff9c4; /* light yellow */
-    color: #333;
-    border-radius: 8px;
-    padding: 1rem;
-  }
-  section.visible {
-    opacity: 1;
-  }
-
-  /* About / Projects section */
-  #about-projects {
-    position: relative;
-    background: url('https://tinyurl.com/37872jre') no-repeat center center/cover;
-    padding: 3rem 1rem;
-    color: white;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  #about-projects::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(233, 30, 99, 0.7); /* pink overlay */
-    z-index: 0;
-    border-radius: 8px;
-  }
-  #about-projects > * {
-    position: relative;
-    z-index: 1;
-  }
-  #about-projects h2 {
-    border-bottom: 2px solid #fbc02d; /* mustard yellow */
-    padding-bottom: 0.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #fdd835; /* bright yellow */
-  }
-  #about-projects ul.projects {
-    list-style: disc inside;
-    margin: 0;
-    padding-left: 1rem;
-  }
-
-  /* Contact section */
-  #contact {
-    position: relative;
-    background: url('https://tinyurl.com/2rxhphc9') no-repeat center center/cover;
-    color: white;
-    padding: 3rem 1rem;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  #contact::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(233, 30, 99, 0.7); /* pink overlay */
-    z-index: 0;
-    border-radius: 8px;
-  }
-  #contact > * {
-    position: relative;
-    z-index: 1;
-  }
-  #contact h2 {
-    border-bottom: 2px solid #fbc02d; /* mustard yellow */
-    padding-bottom: 0.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #fdd835; /* bright yellow */
-  }
-  #contact a {
-    color: #f48fb1; /* lighter pink */
-    transition: color 0.3s ease;
-  }
-  #contact a:hover {
-    color: #d81b60; /* darker pink */
-  }
-
-  /* Social links */
-  .social-links a {
-    margin: 0 0.5rem;
-    color: #f48fb1; /* lighter pink */
-    font-size: 1.4rem;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  .social-links a:hover {
-    color: #d81b60; /* darker pink */
-  }
-
-  /* Footer */
-  footer {
-    position: relative;
-    background: url('https://tinyurl.com/37872jre') no-repeat center center/cover;
-    color: white;
-    padding: 1.5rem 1rem;
-    font-size: 0.9rem;
-    text-align: center;
-    border: none;
-    overflow: hidden;
-  }
-  footer::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(233, 30, 99, 0.8); /* pink overlay */
-    z-index: 0;
-  }
-  footer > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Gallery Section */
-  #gallery {
-    text-align: center;
-  }
-  #gallery h2 {
-    color: #e91e63; /* bright pink */
-    border-bottom: 2px solid #fbc02d; /* mustard yellow */
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-  }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-  }
-  .gallery-grid a {
-    display: block;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-  .gallery-grid a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-  }
-  .gallery-grid img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* Responsive typography */
-  @media (max-width: 600px) {
+    header {
+      position: relative;
+      background: url('https://tinyurl.com/mr223ncc') no-repeat center center/cover;
+      color: white;
+      padding: 6rem 1rem;
+      text-align: center;
+      overflow: hidden;
+      animation: fadeInDown 1s ease forwards;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(233, 30, 99, 0.6);
+      z-index: 0;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.5s;
+    }
     header h1 {
-      font-size: 2rem;
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
     }
     header p {
-      font-size: 1rem;
+      font-size: 1.3rem;
+      font-weight: 400;
     }
-  }
 
-  /* Animations */
-  @keyframes fadeInDown {
-    from {
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      animation: fadeIn 1s ease forwards;
       opacity: 0;
-      transform: translateY(-20px);
+      background-color: #fff9c4;
+      color: #333;
+      border-radius: 8px;
+      padding: 1rem;
     }
-    to {
+    section.visible {
       opacity: 1;
-      transform: translateY(0);
     }
-  }
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+
+    #about-projects h2,
+    #gallery h2,
+    #contact h2 {
+      border-bottom: 2px solid #fbc02d;
+      padding-bottom: 0.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #fdd835;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+
+    ul.projects {
+      list-style: disc inside;
+      margin: 0;
+      padding-left: 1rem;
     }
-  }
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-</style>
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-grid a {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-grid a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    #contact a {
+      color: #f48fb1;
+      transition: color 0.3s ease;
+    }
+    #contact a:hover {
+      color: #d81b60;
+    }
+
+    .social-links a {
+      margin: 0 0.5rem;
+      color: #f48fb1;
+      font-size: 1.4rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: #d81b60;
+    }
+
+    footer {
+      position: relative;
+      background: #e91e63;
+      color: white;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
 
@@ -273,33 +182,23 @@
     <h2>Portfolio Gallery</h2>
     <div class="gallery-grid">
       <a href="https://tinyurl.com/37872jre" target="_blank" rel="noopener noreferrer">
-        <img src="https://tinyurl.com/37872jre" alt="Abstract colorful artwork 1" />
+        <img src="https://tinyurl.com/37872jre" alt="Artwork 1" />
       </a>
       <a href="https://tinyurl.com/37872jre" target="_blank" rel="noopener noreferrer">
-        <img src="https://tinyurl.com/37872jre" alt="Abstract colorful artwork 2" />
+        <img src="https://tinyurl.com/37872jre" alt="Artwork 2" />
       </a>
       <a href="https://tinyurl.com/37872jre" target="_blank" rel="noopener noreferrer">
-        <img src="https://tinyurl.com/37872jre" alt="Abstract colorful artwork 3" />
-      </a>
-      <a href="https://tinyurl.com/37872jre" target="_blank" rel="noopener noreferrer">
-        <img src="https://tinyurl.com/37872jre" alt="Abstract colorful artwork 4" />
-      </a>
-      <a href="https://tinyurl.com/37872jre" target="_blank" rel="noopener noreferrer">
-        <img src="https://tinyurl.com/37872jre" alt="Abstract colorful artwork 5" />
-      </a>
-      <a href="https://tinyurl.com/37872jre" target="_blank" rel="noopener noreferrer">
-        <img src="https://tinyurl.com/37872jre" alt="Abstract colorful artwork 6" />
+        <img src="https://tinyurl.com/37872jre" alt="Artwork 3" />
       </a>
     </div>
   </section>
 
   <section id="contact" class="visible">
     <h2>Contact</h2>
-    <p>Feel free to reach out:</p>
     <p>
-      <a href="mailto:hello@jaind.ai">janeemmanuel247@gmail.com</a><br />
-      <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a> |
-      <a href="https://linkedin.com/in/jane-emmanuel-" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:janeemmanuel247@gmail.com">Contact me</a><br />
+      <a href="https://github.com/yourusername" target="_blank">GitHub</a> |
+      <a href="https://linkedin.com/in/jane-emmanuel-" target="_blank">LinkedIn</a>
     </p>
   </section>
 
